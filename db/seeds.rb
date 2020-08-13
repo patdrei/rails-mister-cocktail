@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Deleting everything 😈 ..."
+
+Dose.delete_all
+Cocktail.delete_all
+Ingredient.delete_all
+
+puts "Aaand creating stuff ..."
+
+20.times do
+  Ingredient.create(name: Faker::Food.ingredient)
+end
+
+10.times do
+  Cocktail.create(name: Faker::Games::Pokemon.move)
+end

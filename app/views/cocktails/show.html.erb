@@ -1,0 +1,11 @@
+<div class="container p-4">
+  <div class="card p-3">
+    <h3> <%=  @cocktail.name %>  </h3>
+    <ul>
+      <% @cocktail.doses.each do |dose|%>
+      <li> <%= dose.description + " - " + dose.ingredient %> </li>
+      <% end %>
+      <li>+ add Ingredient</li>
+    </ul>
+  </div>
+</div>
