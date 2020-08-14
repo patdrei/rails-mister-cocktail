@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+  get 'reviews/create'
+  get 'reviews/destroy'
   # get 'cocktails', to: "cocktails#index"
   # get 'cocktails/new', to: "cocktails#new", as: "cocktail_new"
   # get 'cocktails/:id', to: "cocktails#show", as: "cocktail"
@@ -7,4 +10,6 @@ Rails.application.routes.draw do
   resources :cocktails do
     resources :doses, only: [:create, :new, :index] #collection
   end
+
+  resources :doses, only: [:destroy]
 end

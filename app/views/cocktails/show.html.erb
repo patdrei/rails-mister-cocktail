@@ -1,11 +1,23 @@
-<div class="container p-4">
-  <div class="card p-3">
-    <h3> <%=  @cocktail.name %>  </h3>
+<div class="vh-100 mw-100 container p-4 d-flex flex-column" style="background-image: url('https://source.unsplash.com/1600x900/?<%=@cocktail.name%>'">
+    <h3 class="align-self-center"> <%=  @cocktail.name %>  </h3>
+    <div class="d-flex justify-content-around">
+    <div class="card p-3 w-50 mt-4" style="background-color: rgba(210, 210, 210, 0.7);">
+      <h3>Ingredients</h3>
+    <ul class="list-group list-group-flush bg-transparent">
+      <% @cocktail.doses.each do |dose|%>
+      <li class="list-group-item bg-transparent"> <%= dose.description + " - " + dose.ingredient.name %> <%= link_to "🗑", dose_path(dose), method: :delete, data: { confirm: "Are you sure you want to delete #{dose.ingredient.name} from #{@cocktail.name}" } %> </li>
+      <% end %>
+      <li class="list-group-item bg-transparent"> <%= link_to "+ add Ingredient",  new_cocktail_dose_path(@cocktail)%> </li>
+    </ul>
+  </div>
+    <div class="card p-3 mt-4" style="background-color: rgba(210, 210, 210, 0.7); width: 35%">
+      <h3>Reviews</h3>
     <ul>
       <% @cocktail.doses.each do |dose|%>
-      <li> <%= dose.description + " - " + dose.ingredient %> </li>
+      <li> <%= dose.description + " - " + dose.ingredient.name %> <%= link_to "🗑", dose_path(dose), method: :delete, data: { confirm: "Are you sure you want to delete #{dose.ingredient.name} from #{@cocktail.name}" } %> </li>
       <% end %>
-      <li>+ add Ingredient</li>
+      <li> <%= link_to "+ add Ingredient",  new_cocktail_dose_path(@cocktail)%> </li>
     </ul>
+  </div>
   </div>
 </div>

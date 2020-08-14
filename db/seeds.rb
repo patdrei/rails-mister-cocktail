@@ -17,6 +17,21 @@ puts "Aaand creating stuff ..."
   Ingredient.create(name: Faker::Food.ingredient)
 end
 
-10.times do
-  Cocktail.create(name: Faker::Games::Pokemon.move)
+15.times do
+  Cocktail.create(name: Faker::Book.title)
+end
+
+cocktails = Cocktail.all
+ingredients = Ingredient.all
+
+
+cocktails.each do |cocktail|
+  15.times do
+    dose = Dose.new(description: "#{Faker::Number.non_zero_digit} #{Faker::File.extension}")
+    dose.cocktail = cocktail
+    ingredient = ingredients.sample
+    dose.ingredient = ingredient
+    dose.save
+    puts dose
+  end
 end
