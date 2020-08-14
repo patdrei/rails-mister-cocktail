@@ -5,33 +5,51 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "Deleting everything 😈 ..."
+Dose.destroy_all
+Ingredient.destroy_all
+Cocktail.destroy_all
 
-Dose.delete_all
-Cocktail.delete_all
-Ingredient.delete_all
-
-puts "Aaand creating stuff ..."
-
-20.times do
-  Ingredient.create(name: Faker::Food.ingredient)
+require 'open-uri'
+require 'json'
+def api_call()
+    url = "http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+    ingredient = open(url).read
+    return JSON.parse(ingredient)
 end
-
-15.times do
-  Cocktail.create(name: Faker::Book.title)
+puts "Creating Ingredient List"
+api_call["drinks"].each do |single|
+    ing = single.values[0]
+ @ingredient = Ingredient.new(name: ing)
+ @ingredient.save
 end
+puts "Ingredient list created"
+puts "Creating Cocktail List"
+### example seeds ###
+bd = {name: "Bloody Mary"}
+ng = {name: "Negroni"}
+co = {name: "Cosmopolitan"}
+sf = {name: "Suffering Bastard"}
+wr = {name: "White Russian"}
+cocktail = Cocktail.new(bd)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'bd.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(ng)
+cocktail.save
+cocktail = Cocktail.new(co)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'co.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(sf)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'sf.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(wr)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'wr.jpg', content_type: 'image/jpg')
+cocktail.save
 
-cocktails = Cocktail.all
-ingredients = Ingredient.all
 
 
-cocktails.each do |cocktail|
-  15.times do
-    dose = Dose.new(description: "#{Faker::Number.non_zero_digit} #{Faker::File.extension}")
-    dose.cocktail = cocktail
-    ingredient = ingredients.sample
-    dose.ingredient = ingredient
-    dose.save
-    puts dose
-  end
-end
+
+
