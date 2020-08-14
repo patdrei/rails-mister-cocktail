@@ -13,15 +13,19 @@
   </head>
 
   <body class="bg-dark" style="background-image: url(<%= asset_path('Mcbessjardin.png') %>); background-repeat: no-repeat; background-attachment: fixed;">
-<nav class="navbar navbar-dark justify-content-around sticky-top" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
+<nav class="navbar navbar-dark justify-content-between sticky-top" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
+    <div class="d-flex">
   <form class="form-inline ml-4 mr-4">
     <%= link_to cocktails_path, { class: "btn btn-primary" } do %>
-  <span class="label label-primary">All Cocktail</span>
+  <span class="label label-primary">All Cocktails</span>
 <% end %>
+</form>
   <form class="form-inline">
     <%= link_to new_cocktail_path, { class: "btn btn-outline-primary" } do %>
   <span class="label label-primary">Add a Cocktail</span>
 <% end %>
+</form>
+</div>
 </nav>
     <%= yield %>
   </body>
