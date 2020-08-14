@@ -11,13 +11,13 @@
       <% end %>
     </ul>
       <form class="form-inline">
-    <%= link_to new_cocktail_dose_path(@cocktail), { class: "btn btn-outline-primary" } do %>
+    <%= link_to new_cocktail_dose_path(@cocktail), { class: "btn btn-outline-primary w-100" } do %>
   <span class="label label-primary">Add an Ingredient</span>
 <% end %>
   </div>
     <div class="card p-3 mt-4 text-light" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px); text-align: center">
       <h3>Description</h3>
-      <%= cl_image_tag @cocktail.photo.key, height: 300, width: 300, crop: :fill %>
+      <%#= cl_image_tag @cocktail.photo.key, height: 300, width: 300, crop: :fill %>
   </div>
   </div>
 </div>
