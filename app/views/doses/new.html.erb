@@ -1,6 +1,6 @@
 <div class="container text-align-center">
   <h2>add an Ingredient to <%= @cocktail.name %></h2>
-  <div class="card p-3">
+  <div class="card p-3 " style="background-color: rgba(29, 221, 136, 0.5); backdrop-filter: blur(4px);">
   <%= simple_form_for ([@cocktail, @dose]) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -10,7 +10,7 @@
       <%= f.association :ingredient %>
     </div>
 
-    <div class="form-actions btn btn-outline-primary">
+    <div class="form-actions btn btn-outline-secondary">
       <%= f.button :submit %>
     </div>
   <% end %>
