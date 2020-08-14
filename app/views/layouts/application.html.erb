@@ -12,8 +12,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
+  <body class="bg-dark" style="background-image: url(<%= asset_path('Mcbessjardin') %>);">
+<nav class="navbar navbar-dark justify-content-around sticky-top" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
+  <form class="form-inline ml-4 mr-4">
+    <%= link_to cocktails_path, { class: "btn btn-primary" } do %>
+  <span class="label label-primary">All Cocktail</span>
+<% end %>
+  <form class="form-inline">
+    <%= link_to new_cocktail_path, { class: "btn btn-outline-primary" } do %>
+  <span class="label label-primary">Add a Cocktail</span>
+<% end %>
+</nav>
     <%= yield %>
   </body>
 </html>

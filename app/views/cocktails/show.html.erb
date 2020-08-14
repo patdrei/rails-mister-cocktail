@@ -1,16 +1,21 @@
-<div class="vh-100 mw-100 container p-4 d-flex flex-column" style="background-image: url('https://source.unsplash.com/1600x900/?<%=@cocktail.name%>'">
-    <h3 class="align-self-center"> <%=  @cocktail.name %>  </h3>
+<div class="vh-200 mw-100 container p-4 d-flex flex-column">
+    <div class="text-primary align-self-center">
+    <h3 > <%=  @cocktail.name %>  </h3>
+    </div>
     <div class="d-flex justify-content-around">
-    <div class="card p-3 w-50 mt-4" style="background-color: rgba(210, 210, 210, 0.7);">
-      <h3>Ingredients</h3>
+    <div class="card p-3 w-50 mt-4 text-light" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
+      <h3 class="text-light">Ingredients</h3>
     <ul class="list-group list-group-flush bg-transparent">
       <% @cocktail.doses.each do |dose|%>
       <li class="list-group-item bg-transparent"> <%= dose.description + " - " + dose.ingredient.name %> <%= link_to "🗑", dose_path(dose), method: :delete, data: { confirm: "Are you sure you want to delete #{dose.ingredient.name} from #{@cocktail.name}" } %> </li>
       <% end %>
-      <li class="list-group-item bg-transparent"> <%= link_to "+ add Ingredient",  new_cocktail_dose_path(@cocktail)%> </li>
     </ul>
+      <form class="form-inline">
+    <%= link_to new_cocktail_dose_path(@cocktail), { class: "btn btn-outline-primary" } do %>
+  <span class="label label-primary">Add an Ingredient</span>
+<% end %>
   </div>
-    <div class="card p-3 mt-4" style="background-color: rgba(210, 210, 210, 0.7); width: 35%">
+    <div class="card p-3 mt-4 text-light" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px); text-align: center">
       <h3>Description</h3>
       <%= cl_image_tag @cocktail.photo.key, height: 300, width: 300, crop: :fill %>
   </div>

@@ -4,12 +4,12 @@
 
 <% @cocktails.each do |cocktail| %>
   <div class="col-md-4">
-  <div class="card mt-3 align-center">
+  <div class="card mt-3 justify-content-center" style="background-color: rgba(29, 221, 136, 0.8); backdrop-filter: blur(4px); text-align: center;">
     <img class="card-img-top" src="https://source.unsplash.com/300x300/?<%=cocktail.name%>" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <%= cocktail.name %> </h5>
-      <%= link_to cocktail_path(cocktail), { class: "btn btn-primary" } do %>
-      <span class="label label-primary">OPEN</span>
+      <%= link_to cocktail_path(cocktail), { class: "btn btn-secondary" } do %>
+      <span class="label label-secondary">OPEN</span>
       <% end %>
     </div>
   </div>
