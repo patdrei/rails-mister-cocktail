@@ -4,7 +4,7 @@
 
 <% @cocktails.each do |cocktail| %>
   <div class="col-md-4">
-  <div class="card mt-3 justify-content-center" style="background-color: rgba(29, 221, 136, 0.8); backdrop-filter: blur(4px); text-align: center;">
+  <div class="card mt-2 mb-2 shadow justify-content-center" style="background-color: rgba(29, 221, 136, 0.8); backdrop-filter: blur(4px); text-align: center;">
     <img class="card-img-top" src="https://source.unsplash.com/300x300/?<%=cocktail.name%>" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <%= cocktail.name %> </h5>

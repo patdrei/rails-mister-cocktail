@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-dark" style="background-image: url(<%= asset_path('Mcbessjardin') %>);">
+  <body class="bg-dark" style="background-image: url(<%= asset_path('Mcbessjardin') %>); background-repeat: no-repeat; background-attachment: fixed;">
 <nav class="navbar navbar-dark justify-content-around sticky-top" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
   <form class="form-inline ml-4 mr-4">
     <%= link_to cocktails_path, { class: "btn btn-primary" } do %>
