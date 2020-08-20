@@ -5,13 +5,18 @@
 <% @cocktails.each do |cocktail| %>
   <div class="col-md-4">
   <div class="card mt-2 mb-2 shadow justify-content-center" style="background-color: rgba(29, 221, 136, 0.8); backdrop-filter: blur(4px); text-align: center;">
-    <img class="card-img-top" src="https://source.unsplash.com/300x300/?<%=cocktail.name%>" alt="Card image cap">
+            <% if cocktail.photo.present? %>
+              <%= cl_image_tag cocktail.photo.key, height: 300, width: 343, crop: :fill, :class => "card-img-top" %>
+            <% else %>
+              <img class="card-img-top" src="https://source.unsplash.com/300x300/?<%=cocktail.name%>" alt="Card image cap">
+            <% end %>
     <div class="card-body">
       <h5 class="card-title"> <%= cocktail.name %> </h5>
       <%= link_to cocktail_path(cocktail), { class: "btn btn-secondary" } do %>
       <span class="label label-secondary shadow">OPEN</span>
       <% end %>
     </div>
+
   </div>
   </div>
   <% end %>

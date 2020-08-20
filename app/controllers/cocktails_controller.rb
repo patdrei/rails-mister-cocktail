@@ -1,5 +1,8 @@
 class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show]
+  def home
+  end
+
   def index
     @cocktails = Cocktail.all
   end
@@ -27,7 +30,7 @@ class CocktailsController < ApplicationController
   end
 
   def strong_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:cocktail).permit(:name, :photo, :description)
   end
 
 end

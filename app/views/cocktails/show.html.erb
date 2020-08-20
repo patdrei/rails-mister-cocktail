@@ -1,9 +1,30 @@
 <div class="vh-200 mw-100 container p-4 d-flex flex-column">
     <div class="text-primary align-self-center">
     <h3 > <%=  @cocktail.name %>  </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-lg-6">
+        <div class="card p-3 mt-4 text-light border border-primary w-100 d-flex" style="background-color: rgba(70, 70, 70, 0.7); backdrop-filter: blur(4px); text-align: center">
+      <h3>Description</h3>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-12 mb-2">
+          <div class="align-self-center">
+            <% if @cocktail.photo.present? %>
+              <%= cl_image_tag @cocktail.photo.key, height: 400, width: 300, crop: :fill %>
+            <% else %>
+              <img class="card-img-top" src="https://source.unsplash.com/300x400/?<%=@cocktail.name%>" alt="Card image cap">
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-12">
+          <h4><%= @cocktail.description %></h4>
+        </div>
+      </div>
     </div>
-    <div class="d-flex justify-content-around">
-    <div class="card p-3 w-50 mt-4 text-light" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px)">
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+    <div class="card p-3 w-100 mt-4 mr-2 text-light border border-primary" style="background-color: rgba(70, 70, 70, 0.7); backdrop-filter: blur(4px)">
       <h3 class="text-light">Ingredients</h3>
     <ul class="list-group list-group-flush bg-transparent">
       <% @cocktail.doses.each do |dose|%>
@@ -14,10 +35,24 @@
     <%= link_to new_cocktail_dose_path(@cocktail), { class: "btn btn-outline-primary w-100" } do %>
   <span class="label label-primary">Add an Ingredient</span>
 <% end %>
-  </div>
-    <div class="card p-3 mt-4 text-light" style="background-color: rgba(70, 70, 70, 0.4); backdrop-filter: blur(4px); text-align: center">
-      <h3>Description</h3>
-      <%#= cl_image_tag @cocktail.photo.key, height: 300, width: 300, crop: :fill %>
-  </div>
+</div>
+</div>
+</div>
+      <div class="d-flex justify-content-around">
+    <div class="card p-3 w-100 mt-4 text-light border border-primary" style="background-color: rgba(70, 70, 70, 0.7); backdrop-filter: blur(4px)">
+      <h3 class="text-light">Reviews</h3>
+    <ul class="list-group list-group-flush bg-transparent">
+      <% @cocktail.reviews.each do |review|%>
+      <li class="list-group-item bg-transparent"> <%= review.description %> <%= link_to "🗑", review_path(review), method: :delete, data: { confirm: "Are you sure you want to delete the review from #{@cocktail.name}" } %> </li>
+      <% end %>
+    </ul>
+      <form class="form-inline">
+    <%= link_to new_cocktail_review_path(@cocktail), { class: "btn btn-outline-primary w-100" } do %>
+  <span class="label label-primary">Made it yourself? - Write a Review!</span>
+<% end %>
   </div>
 </div>
+
+
+
+

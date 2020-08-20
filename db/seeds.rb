@@ -23,31 +23,31 @@ api_call["drinks"].each do |single|
  @ingredient.save
 end
 puts "Ingredient list created"
-# puts "Creating Cocktail List"
-# ### example seeds ###
-# bd = {name: "Bloody Mary"}
-# ng = {name: "Negroni"}
-# co = {name: "Cosmopolitan"}
-# sf = {name: "Suffering Bastard"}
-# wr = {name: "White Russian"}
-# cocktail = Cocktail.new(bd)
-# file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
-# cocktail.photo.attach(io: file, filename: 'bd.jpg', content_type: 'image/jpg')
-# cocktail.save
-# cocktail = Cocktail.new(ng)
-# cocktail.save
-# cocktail = Cocktail.new(co)
-# file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
-# cocktail.photo.attach(io: file, filename: 'co.jpg', content_type: 'image/jpg')
-# cocktail.save
-# cocktail = Cocktail.new(sf)
-# file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
-# cocktail.photo.attach(io: file, filename: 'sf.jpg', content_type: 'image/jpg')
-# cocktail.save
-# cocktail = Cocktail.new(wr)
-# file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
-# cocktail.photo.attach(io: file, filename: 'wr.jpg', content_type: 'image/jpg')
-# cocktail.save
+puts "Creating Cocktail List"
+### example seeds ###
+bd = {name: "Bloody Mary"}
+ng = {name: "Negroni"}
+co = {name: "Cosmopolitan"}
+sf = {name: "Suffering Bastard"}
+wr = {name: "White Russian"}
+cocktail = Cocktail.new(bd)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'bd.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(ng)
+cocktail.save
+cocktail = Cocktail.new(co)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'co.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(sf)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'sf.jpg', content_type: 'image/jpg')
+cocktail.save
+cocktail = Cocktail.new(wr)
+file = URI.open("https://source.unsplash.com/900x900/?#{cocktail.name}")
+cocktail.photo.attach(io: file, filename: 'wr.jpg', content_type: 'image/jpg')
+cocktail.save
 
 
 
